@@ -1,0 +1,78 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Camilify</title>
+    <meta name="description" content="Felipe's website">
+    <meta name="author" content="Felipe Cortez">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="{{ url_for('static', filename='assets/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/paper/dist/paper-full.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/camilify.js') }}"></script>
+
+    <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Karla:400,700">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='apple-touch-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='apple-touch-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='apple-touch-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='apple-touch-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='apple-touch-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='apple-touch-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='apple-touch-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='apple-touch-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon-32x32.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='android-chrome-192x192.png') }}" sizes="192x192">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon-96x96.png') }}" sizes="96x96">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon-16x16.png') }}" sizes="16x16">
+    <link rel="manifest" href="url_for('static', filename='/manifest.json') }}">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-TileImage" content="url_for('static', filename='mstile-144x144.png) }}'">
+    <meta name="theme-color" content="#ffffff">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-49103022-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+    <canvas id="rectCanvas" resize></canvas>
+
+    <div id="container">
+        <h1>camilify</h1>
+	<ul>
+	<li>
+	<input name="strong" type="text">
+	</li>
+	<li>
+	<input name="deviate" type="range" min=0 max=0.8 value=0.2 step=0.01>
+	</li>
+	<li>
+	<input name="repeat" type="range" min=0 max=0.3 value=0.05 step=0.01>
+	</li>
+	<h2 id="output"></h2>
+
+    </div>
+
+    <script>
+        $("input[name='strong']").on("keyup paste", function() {
+	    var deviate = $("input[name='deviate']").val();
+	    var repeat = $("input[name='repeat']").val();
+            $("#output").text(camilify($(this).val(), deviate, repeat));
+        });
+    </script>
+
+</body>
+
+</html>
