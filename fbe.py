@@ -14,10 +14,12 @@ env = Environment(loader=FileSystemLoader(searchpath='./templates/'),
 STATIC_DIR = "static"
 TEMPLATES_DIR = "templates"
 HTML_INPUT_DIR = "input"
-BLOG_DIR = "posts"
+POSTS_DIR = "posts"
 OUTPUT_DIR = "output"
 BLOG_OUTPUT_DIR = "blog"
 PORT = 8000
+
+posts = []
 
 def copy_anything(src, dst):
     try:
@@ -36,7 +38,7 @@ def get_files_in_folder(folder):
 
 def gen_posts():
     makedirs(join(OUTPUT_DIR, BLOG_OUTPUT_DIR))
-    post_paths = get_files_in_folder(BLOG_DIR)
+    post_paths = get_files_in_folder(POSTS_DIR)
     for path in post_paths:
         post = {}
         y, m, d = get_date_from_filename(path[6:])
@@ -48,13 +50,12 @@ def gen_posts():
             post["title"] = f.readline()
             post["contents"] = f.read()
             post["contents"] = Markup(markdown.markdown(post["contents"]))
+            posts.append(post)
             print("Special", post["special"])
             print("Title", post["title"])
             print("Date", post["date"])
             print("Contents", post["contents"])
 
-        #with open(join(TEMPLATES_DIR, "post.html"), 'r') as post_template_file:
-        #    post_template = post_template_file.read()
         post_template = env.get_template("post.html")
         html = post_template.render(title="Felipe Cortez - {}".format(post["title"]), post=post)
 
@@ -69,11 +70,17 @@ def copy_static():
         copy_anything(join(STATIC_DIR, thing), join(OUTPUT_DIR, thing))
 
 def gen_index():
-    with open(join(TEMPLATES_DIR, "base.html"), 'r') as base_template_file:
-        base_template = base_template_file.read()
-        template = Template(base_template).render(title="Felipe Cortez")
-        with open(join(OUTPUT_DIR, "index.html"), 'w') as index_file:
-            index_file.write(template)
+    index_template = env.get_template("base.html")
+    html = index_template.render(title="Felipe Cortez")
+
+    with open(join(OUTPUT_DIR, "index.html"), 'w') as index_file:
+        index_file.write(html)
+
+def gen_blog_index():
+    blog_index_template = env.get_template("blog.html")
+    html = blog_index_template.render(title="Felipe Cortez", posts=posts, blog_output_dir = BLOG_OUTPUT_DIR)
+    with open(join(OUTPUT_DIR, BLOG_OUTPUT_DIR, "index.html"), 'w') as index_file:
+        index_file.write(html)
 
 def gen_blog():
     #with open(join(TEMPLATES_DIR, "base.html"), 'r') as base_template_file:
@@ -81,7 +88,9 @@ def gen_blog():
     #    template = Template(base_template).render(title="Felipe Cortez")
     #    with open(join(OUTPUT_DIR, "post.html"), 'w') as index_file:
     #        index_file.write(template)
+
     gen_posts()
+    gen_blog_index()
 
 def serve_output():
     chdir(join(abspath(curdir), OUTPUT_DIR))
