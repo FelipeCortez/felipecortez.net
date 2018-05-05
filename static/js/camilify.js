@@ -1,3 +1,12 @@
+// from http://youmightnotneedjquery.com/#ready
+function ready(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+        fn();
+    } else {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+}
+
 var keys = [];
 keys.push(Array.from('qwertyuiop'))
 keys.push(Array.from('asdfghjkl'))
@@ -12,6 +21,7 @@ function choice(ar) {
 }
 
 function getCoords(key) {
+    // I really didn't know how to name variables a year ago
     var fi = -1;
     for(var i = 0; i < keys.length; i++) {
         var j = keys[i].indexOf(key);
@@ -38,15 +48,15 @@ function clamp(val, min, max) {
     }
 }
 
-function camilify(strong, deviate, repeat) {
+function camilify(text, deviate, repeat) {
     var deviate_x = deviate || 0.2;
     var deviate_y = deviate_x / 2.0;
     repeat = repeat || 0.05;
 
     var output = [];
     var coord = [];
-    while(strong) {
-        var key = strong[0];
+    while(text) {
+        var key = text[0];
         coords = getCoords(key);
         if(coords) {
             if(Math.random() < deviate_x) {
@@ -66,13 +76,29 @@ function camilify(strong, deviate, repeat) {
             new_coords = [new_y, new_x];
             output.push(keys[new_coords[0]][new_coords[1]]);
         } else {
-            output.push(key);
+            if(key == "\n") {
+                output.push("<br>");
+            } else {
+                output.push(key);
+            }
         }
 
         if(Math.random() > repeat) {
-            strong = strong.slice(1);
+            text = text.slice(1);
         }
     }
 
     return output.join("");
 }
+
+function camilifyTextArea() {
+    var text = document.querySelector("textarea[name='text']").value;
+    var deviate = document.querySelector("input[name='deviate']").value;
+    var repeat = document.querySelector("input[name='repeat']").value;
+    document.querySelector("#camilify-result").innerHTML = camilify(text, deviate, repeat);
+}
+
+ready(function() {
+    document.querySelector("textarea[name='text']").addEventListener('keyup', camilifyTextArea);
+    document.querySelector("textarea[name='text']").addEventListener('paste', camilifyTextArea);
+});

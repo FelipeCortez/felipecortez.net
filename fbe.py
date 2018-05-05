@@ -44,19 +44,22 @@ def gen_posts():
         y, m, d = get_date_from_filename(path[6:])
         post["date"] = "-".join([y, m, d])
         with open(path, 'r') as f:
-            post["special"] = f.readline()
-            post["slug"] = f.readline().strip()
-            f.readline()
-            post["title"] = f.readline()
-            post["contents"] = f.read()
-            post["contents"] = Markup(markdown.markdown(post["contents"]))
-            posts.append(post)
-            print("Special", post["special"])
-            print("Title", post["title"])
-            print("Date", post["date"])
-            print("Contents", post["contents"])
+            post["special"] = f.readline().strip()
+            if "ignore" not in post["special"]:
+                post["slug"] = f.readline().strip()
+                f.readline()
+                post["title"] = f.readline()
+                post["contents"] = f.read()
+                post["contents"] = Markup(markdown.markdown(post["contents"], extensions=["markdown.extensions.tables"]))
+                posts.append(post)
+                #print("Special", post["special"])
+                #print("Title", post["title"])
+                #print("Date", post["date"])
+                #print("Contents", post["contents"])
 
-        post_template = env.get_template("post.html")
+    post_template = env.get_template("post.html")
+    for post in posts:
+        print(post["title"])
         html = post_template.render(title="Felipe Cortez - {}".format(post["title"]), post=post)
 
         with open(join(OUTPUT_DIR, BLOG_OUTPUT_DIR, post["slug"] + ".html"), 'w') as f:
@@ -70,11 +73,23 @@ def copy_static():
         copy_anything(join(STATIC_DIR, thing), join(OUTPUT_DIR, thing))
 
 def gen_index():
-    index_template = env.get_template("base.html")
-    html = index_template.render(title="Felipe Cortez")
+    base_template = env.get_template("base.html")
+    html = base_template.render(title="Felipe Cortez")
 
     with open(join(OUTPUT_DIR, "index.html"), 'w') as index_file:
         index_file.write(html)
+
+    base_template = env.get_template("camilify.html")
+    html = base_template.render(title="camilify")
+
+    with open(join(OUTPUT_DIR, "camilify.html"), 'w') as camilifile:
+        camilifile.write(html)
+
+    #base_template = env.get_template("nomes.html")
+    #html = base_template.render(title="nomes")
+
+    with open(join(OUTPUT_DIR, "nomes.html"), 'w') as camilifile:
+        camilifile.write(html)
 
 def gen_blog_index():
     blog_index_template = env.get_template("blog.html")

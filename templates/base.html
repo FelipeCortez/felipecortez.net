@@ -41,6 +41,8 @@
         ga('send', 'pageview');
     </script>
 
+    {% block extra_head %}{% endblock %}
+
 </head>
 
 <body>
@@ -49,16 +51,17 @@
         <h1 class="title">Felipe Cortez</h1>
         <span style="font-size: 22.5px" class="divider">—————————</span>
 
+        <div class="container">
         <ul>
             <li><a href="CV2017.pdf">cv</a></li>
-            <li><a href="/blog">blog</a></li>
-            <li><a href="https://github.com/CFelipe">github</a></li>
+            <li><a href="https://github.com/FelipeCortez">github</a></li>
             <li><a href="https://soundcloud.com/FelipeCortez">soundcloud</a></li>
             <li><a href="https://last.fm/user/FelipeSah">last.fm</a></li>
-            <li><a href="https://letterboxd.com/felipecortez">letterboxd</a></li>
+            <li><a href="https://letterboxd.com/FelipeCortez">letterboxd</a></li>
             <li><a href="https://facebook.com/FelipeSah">facebook</a></li>
             <li><a href="/marks/felipecortez">bookmarks</a></li>
         </ul>
+        </div>
 
         <h6>felipecortezfi@gmail.com</h6>
         {% endblock %}
