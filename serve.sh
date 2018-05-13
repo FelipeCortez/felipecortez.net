@@ -1,1 +1,1 @@
-http-server output -p 5000
+http-server html -p 5000
