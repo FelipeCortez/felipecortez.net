@@ -1,0 +1,253 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>albums</title>
+
+    <link rel="stylesheet" href="/style/reset.css">
+    <link rel="stylesheet" href="/style/style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/img/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-TileImage" content="/img/mstile-144x144.png">
+    <meta name="theme-color" content="#fefefe">
+
+    <style type="text/css">
+     body {
+       padding: 0;
+     }
+
+     .title, .container {
+       margin-top: 35px;
+       margin-left: 35px;
+     }
+
+     .full-container {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+     }
+
+     .friends li {
+       display: inline-block;
+       margin-right: 5px;
+     }
+
+     .friends li a {
+       font-size: 10px;
+     }
+
+     .grid {
+       margin-top: 35px;
+       --content-width: 100vw;
+       --columns: 5;
+       --row-size: calc(var(--content-width) / var(--columns));
+
+       width: 100%;
+       max-width: var(--content-width);
+
+       display: grid;
+
+       grid-template-columns: repeat(var(--columns), 1fr);
+       grid-auto-rows: var(--row-size);
+
+       grid-column-gap: 0;
+       grid-row-gap: 0;
+     }
+
+     .album {
+       background-size: cover;
+       background-position: center center;
+       background-color: whitesmoke;
+       color: rgba(0, 0, 0, 0);
+       font-size: 11px;
+       transition: filter 200ms;
+     }
+
+     .album:hover {
+       color: rgba(255, 255, 255, 1);
+       font-weight: 500;
+       text-shadow:
+         -1px -1px 0 #000,
+         1px -1px 0 #000,
+         -1px 1px 0 #000,
+         1px 1px 0 #000;
+       font-size: 12px;
+       padding: 4px;
+       filter: grayscale(50%);
+     }
+
+     .album-title, .album-band {
+       color: inherit;
+       text-shadow: inherit;
+     }
+
+     .album-title {
+       font-weight: 500;
+     }
+
+     .album-band {
+       font-weight: 400;
+       font-size: 16px;
+     }
+
+     .credits {
+       margin-bottom: 25px;
+     }
+
+     @media (max-width: 1400px) {
+       .grid {
+         --columns: 4;
+       }
+     }
+
+     @media (max-width: 1050px) {
+       .grid {
+         --columns: 3;
+       }
+     }
+
+     @media (max-width: 700px) {
+       .grid {
+         --columns: 2;
+       }
+     }
+
+     @media (max-width: 350px) {
+       .grid {
+         --columns: 1;
+       }
+     }
+    </style>
+
+    <script>
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-49103022-1', 'auto');
+     ga('send', 'pageview');
+    </script>
+  </head>
+
+  <body>
+    <h1 class="title">albums</h1>
+
+    <div class="container">
+      <ul class="friends">
+      </ul>
+    </div>
+
+    <div class="grid">
+    </div>
+
+    <script>
+     const url = new URL(window.location);
+     let user = url.searchParams.get('u');
+     if (!user) { user = "FelipeSah"; }
+     console.log(user);
+
+     const albumsRequestURL = "//ws.audioscrobbler.com/2.0/" +
+                        "?api_key=107499f5aeb365dcac943a0cd2c0fdaf" +
+                        "&method=user.gettopalbums" +
+                        `&user=${user}` +
+                        "&period=1month" +
+                        "&limit=100" +
+                        "&format=json";
+
+     const grid = document.querySelector(".grid");
+
+     let httpRequest1 = new XMLHttpRequest();
+     httpRequest1.open("GET", albumsRequestURL);
+     httpRequest1.send();
+
+     httpRequest1.onreadystatechange = function() {
+       if (httpRequest1.readyState === XMLHttpRequest.DONE) {
+         if (httpRequest1.status === 200) {
+           const results = JSON.parse(httpRequest1.responseText);
+           const albums = results["topalbums"]["album"];
+           console.log(albums);
+           const albumsWithArtwork = albums.filter(album => album["image"][3]["#text"] != "")
+                                           .slice(0, 60); // lcm(3, 4, 5)
+           console.log(albumsWithArtwork);
+           for (let album of albumsWithArtwork) {
+             let imageURL = album["image"][3]["#text"];
+
+             let albumElement = document.createElement("div");
+             albumElement.className = "album";
+             albumElement.setAttribute("style", `background-image: url(${imageURL});`);
+
+             let albumBandElement = document.createElement("div");
+             albumBandElement.className = "album-band";
+             albumBandElement.textContent = `${album["artist"]["name"]}`;
+
+             let albumTitleElement = document.createElement("div");
+             albumTitleElement.className = "album-title";
+             albumTitleElement.textContent = `${album["name"]}`;
+
+             albumElement.appendChild(albumBandElement);
+             albumElement.appendChild(albumTitleElement);
+             grid.appendChild(albumElement);
+           }
+         }
+       }
+     }
+
+     const requestURL = "//ws.audioscrobbler.com/2.0/" +
+                        "?api_key=107499f5aeb365dcac943a0cd2c0fdaf" +
+                        "&method=user.getfriends" +
+                        `&user=${user}` +
+                        "&limit=100" +
+                        "&format=json";
+
+     const friendsList = document.querySelector(".friends");
+
+     httpRequest = new XMLHttpRequest();
+     httpRequest.open("GET", requestURL);
+     httpRequest.send();
+
+     httpRequest.onreadystatechange = function() {
+       if (httpRequest.readyState === XMLHttpRequest.DONE) {
+         if (httpRequest.status === 200) {
+           const results = JSON.parse(httpRequest.responseText);
+           const friends = results["friends"]["user"];
+           console.log(friends);
+           const friendsWithPlays = friends.filter(friend => friend["playcount"] > 0)
+                                           .slice(0, 100);
+           console.log(friendsWithPlays);
+           for (let friend of friendsWithPlays) {
+             let friendElement = document.createElement("li");
+
+             let friendHref = document.createElement("a");
+             friendHref.href = `http://127.0.0.1:5000/albums?u=${friend["name"]}`;
+             friendHref.textContent = `${friend["name"]}`;
+
+             friendElement.appendChild(friendHref);
+             friendsList.appendChild(friendElement);
+           }
+         }
+       }
+     }
+    </script>
+  </body>
+</html>

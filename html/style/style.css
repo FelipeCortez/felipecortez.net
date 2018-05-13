@@ -18,9 +18,10 @@ code {
 }
 
 .title {
+    max-width: 600px;
+    margin-bottom: 30px;
     color: #3cb568;
-    margin: 0px;
-    display: inline-block;
+    display: block;
     border-bottom: 4px double;
     padding-bottom: 5px;
 }
@@ -43,7 +44,7 @@ h2 {
 .project {
   position: relative;
   display: grid;
-  border-bottom: 2px solid #E0E0E0;
+  border-bottom: 1px solid #D8D8D8;
   grid-template-columns: 135px auto;
   padding: 15px 0;
 }
@@ -74,6 +75,7 @@ ul.tech {
   font-size: 12px;
   background-color: #F5F5F5;
   color: #7f7f76;
+  margin-right: 3px;
 }
 
 .project .image-container {
@@ -95,7 +97,7 @@ ul.tech {
 
 .container {
     max-width: 600px;
-    margin-top: 20px;
+    margin-top: 3px;
     margin-right: 35px;
 }
 
@@ -109,6 +111,9 @@ ul.tech {
 .divider {
     font-weight: 500;
     color: #3cb568;
+}
+
+.front-links {
 }
 
 ul {
