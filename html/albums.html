@@ -38,6 +38,7 @@
      .title, .container {
        margin-top: 35px;
        margin-left: 35px;
+       margin-right: 35px;
      }
 
      .full-container {
@@ -114,6 +115,11 @@
        margin-bottom: 25px;
      }
 
+     .noalbums {
+       margin-left: 35px;
+       font-size: 50px;
+     }
+
      @media (max-width: 1400px) {
        .grid {
          --columns: 4;
@@ -165,7 +171,11 @@
      const url = new URL(window.location);
      let user = url.searchParams.get('u');
      if (!user) { user = "FelipeSah"; }
-     console.log(user);
+
+     const title = `${user}'s albums`;
+
+     document.querySelector("h1").textContent = title;
+     document.title = title;
 
      const albumsRequestURL = "//ws.audioscrobbler.com/2.0/" +
                         "?api_key=107499f5aeb365dcac943a0cd2c0fdaf" +
@@ -186,10 +196,16 @@
          if (httpRequest1.status === 200) {
            const results = JSON.parse(httpRequest1.responseText);
            const albums = results["topalbums"]["album"];
-           console.log(albums);
            const albumsWithArtwork = albums.filter(album => album["image"][3]["#text"] != "")
                                            .slice(0, 60); // lcm(3, 4, 5)
-           console.log(albumsWithArtwork);
+           if (albumsWithArtwork.length == 0) {
+             let noalbums = document.createElement("div");
+             noalbums.className = "noalbums";
+             noalbums.textContent = "oh, look. nothing";
+             grid.appendChild(noalbums);
+             return;
+           }
+
            for (let album of albumsWithArtwork) {
              let imageURL = album["image"][3]["#text"];
 
@@ -217,7 +233,7 @@
                         "?api_key=107499f5aeb365dcac943a0cd2c0fdaf" +
                         "&method=user.getfriends" +
                         `&user=${user}` +
-                        "&limit=100" +
+                        "&limit=200" +
                         "&format=json";
 
      const friendsList = document.querySelector(".friends");
@@ -239,7 +255,7 @@
              let friendElement = document.createElement("li");
 
              let friendHref = document.createElement("a");
-             friendHref.href = `http://127.0.0.1:5000/albums?u=${friend["name"]}`;
+             friendHref.href = `/albums?u=${friend["name"]}`;
              friendHref.textContent = `${friend["name"]}`;
 
              friendElement.appendChild(friendHref);
