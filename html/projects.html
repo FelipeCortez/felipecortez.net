@@ -6,7 +6,7 @@
 
     <title>Felipe Cortez · projects</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="description" content="Felipe's website">
+    <meta name="description" content="Coding projects">
     <meta name="author" content="Felipe Cortez">
 
     <link rel="stylesheet" href="/style/reset.css">
@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-    <link rel="manifest" href="/img/site.webmanifest">
+    <link rel="manifest" href="/img/site.webmanif est">
     <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="theme-color" content="#ffffff">
@@ -37,7 +37,7 @@
 
   <body>
     <div>
-      <div class="container">
+      <div class="container" style="max-width: 800px;">
         <h1 class="title"><a href="/">Felipe Cortez</a> • projects</h1>
 
         <div class="project">
@@ -52,10 +52,11 @@
             <a href="https://bmarks.net">
               <h2>bmarks.net</h2>
             </a>
-            <div class="description">Full featured tag-based bookmark manager.</div>
+            <div class="description">An open-source full featured tag-based online bookmark manager inspired by <a href="https://del.icio.us">del.icio.us</a> and <a href="https://pinboard.in">Pinboard</a>.</div>
             <ul class="tech">
               <li>Python</li>
               <li>Django</li>
+              <li>JavaScript</li>
               <li>PostgreSQL</li>
             </ul>
           </div>
@@ -73,10 +74,11 @@
             <a href="https://github.com/FelipeCortez/emmn">
               <h2>EMMN</h2>
             </a>
-            <div class="description">Satellite tracking desktop application for the National Space Research Institute</div>
+            <div class="description">A satellite tracking desktop application for the <a href="http://www.inpe.br/">National Space Research Institute</a> implemented on top of a terminal-based program.</div>
             <ul class="tech">
               <li>C++</li>
               <li>Qt</li>
+              <li>Arduino</li>
             </ul>
           </div>
         </div>
@@ -93,7 +95,7 @@
             <a href="https://github.com/FelipeCortez/grybo">
               <h2>grybo</h2>
             </a>
-            <div class="description">A Guitar Hero inspired game featuring Brazilian music</div>
+            <div class="description">A Guitar Hero inspired game in development featuring Brazilian music such as samba, choro and bossa nova.</div>
             <ul class="tech">
               <li>C++</li>
               <li>SDL</li>
@@ -104,16 +106,16 @@
         <div class="project">
           <div class="image-container">
             <div class="image">
-              <a href="/albums">
+              <a href="/albums?u=felipesah">
                 <img src="/img/albums.png" alt="Albums">
               </a>
             </div>
           </div>
           <div class="info-container">
-            <a href="/albums">
-              <h2>Albums I've been listening to</h2>
+            <a href="/albums?u=felipesah">
+              <h2>last.fm album explorer</h2>
             </a>
-            <div class="description">Reads <a href="http://www.last.fm/user/FelipeSah">last.fm data</a> and displays their album covers</div>
+            <div class="description">Uses the <a href="https://www.last.fm/api">last.fm api</a> to display what records people have been listening to recently. Inspired by record store browsing and looking at beautiful album art.</div>
             <ul class="tech">
               <li>JavaScript</li>
             </ul>
@@ -132,7 +134,7 @@
             <a href="/nomes">
               <h2>nomes</h2>
             </a>
-            <div class="description">Explorable list of most Brazilian names</div>
+            <div class="description">An explorable list of most Brazilian names, including similar names found via <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a>.</div>
             <ul class="tech">
               <li>Python</li>
               <li>Flask</li>
@@ -153,7 +155,7 @@
             <a href="https://ciroeacidade.com">
               <h2>Ciro e a Cidade</h2>
             </a>
-            <div class="description">Designed the website, played keyboards on the EP.</div>
+            <div class="description">Played the guitar and keys in this band for some time, designed the website and produced <a href="https://www.youtube.com/watch?v=B8TbfGLbiho"> this track</a>.</div>
             <ul class="tech">
               <li>Python</li>
               <li>Flask</li>
@@ -174,7 +176,7 @@
             <a href="/camilify">
               <h2>camilify</h2>
             </a>
-            <div class="description">Simulating how my friend Camile types</div>
+            <div class="description">Simulates <a href="https://twitter.com/scleroticfinger">how my friend Camile types</a>.</div>
             <ul class="tech">
               <li>JavaScript</li>
             </ul>
@@ -193,13 +195,23 @@
             <a href="https://github.com/FelipeCortez/StocSynth">
               <h2>StocSynth</h2>
             </a>
-            <div class="description">Virtual instrument</div>
+            <div class="description">A virtual instrument plugin based on <a href="https://en.wikipedia.org/wiki/Additive_synthesis">additive synthesis</a> and the <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a>.</div>
             <ul class="tech">
               <li>C++</li>
               <li>JUCE</li>
             </ul>
           </div>
         </div>
+
+        <h1 class="title" style="margin-top: 30px">b-sides</h1>
+        <ul class="b-sides">
+          <li><a href="https://github.com/FelipeCortez/processing_sketches">Unknown Pleasures album cover in Processing</a></li>
+          <li><a href="https://telegram.me/addstickers/msnmessengermsn">MSN Messenger emoticons for Telegram</a></li>
+          <li><a href="https://www.youtube.com/watch?v=AjlNCOzSdwo">Three-handed electric piano game soundtrack cover</a></li>
+          <li><a href="https://www.youtube.com/watch?v=uyEfovYUZco">A TV show theme cover</a></li>
+          <li><a href="https://rateyourmusic.com/list/FelipeCortez/valid_unix_commands/">A list of band names that work as UNIX commands</a></li>
+
+        </ul>
       </div>
     </div>
   </body>

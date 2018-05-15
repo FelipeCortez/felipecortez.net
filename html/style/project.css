@@ -13,7 +13,7 @@
 
 .project a {
   text-decoration: none;
-  color: #3F91CC;
+  color: var(--blu);
 }
 
 .project a:hover {
@@ -61,8 +61,15 @@ ul.tech {
   filter: invert(100%);
 }
 
-@media (max-width: 500px) {
-  .project {
-    grid-template-columns: 1fr;
-  }
+h3 {
+  margin: 15px 0;
+  text-align: center;
+  padding: 15px;
+  font-size: 12px !important;
+  background-color: gray;
+  text-transform: uppercase;
+}
+
+.b-sides li {
+  margin-bottom: 10px;
 }

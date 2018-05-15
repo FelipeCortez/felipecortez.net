@@ -25,10 +25,14 @@
        padding: 0;
      }
 
-     .title, .container {
+     .title {
        margin-top: 35px;
        margin-left: 35px;
        margin-right: 35px;
+     }
+
+     .container {
+       margin-top: 30px;
      }
 
      .full-container {
@@ -106,7 +110,7 @@
      }
 
      .noalbums {
-       margin-left: 35px;
+       padding: 0 35px;
        font-size: 50px;
      }
 
@@ -149,12 +153,12 @@
   <body>
     <h1 class="title">albums</h1>
 
+    <div class="grid">
+    </div>
+
     <div class="container">
       <ul class="friends">
       </ul>
-    </div>
-
-    <div class="grid">
     </div>
 
     <script>
@@ -189,10 +193,8 @@
            const albumsWithArtwork = albums.filter(album => album["image"][3]["#text"] != "")
                                            .slice(0, 60); // lcm(3, 4, 5)
            if (albumsWithArtwork.length == 0) {
-             let noalbums = document.createElement("div");
-             noalbums.className = "noalbums";
-             noalbums.textContent = "wow, look. nothing";
-             grid.appendChild(noalbums);
+             grid.className = "noalbums";
+             grid.textContent = "wow, look. nothing";
              return;
            }
 

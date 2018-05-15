@@ -1,3 +1,7 @@
+:root {
+  --blu: rgb(63, 145, 204);
+}
+
 body {
   background-color: #fefefe;
   margin: 0;
@@ -64,7 +68,7 @@ ul {
 }
 
 li, li a, li span, h6 {
-  color: #36b2e8;
+  color: var(--blu);
   font-size: 20px;
   font-weight: 400;
   text-decoration: none;
@@ -75,7 +79,7 @@ li {
 }
 
 li a:hover {
-  border-bottom: 1px solid #36b2e8;
+  border-bottom: 1px solid var(--blu);
 }
 
 p > a {
@@ -93,7 +97,6 @@ h6 {
   border-radius: 2px;
   background-color: #F9F9F9;
   padding: 10px;
-  width: 600px;
   font-size: 16px;
 }
 
@@ -125,11 +128,16 @@ input[type=range] {
   border-top: 1px solid #E6E6E6;
 }
 
-.credits > span {
+.credits > a {
   float: right;
   font-weight: 500;
   font-size: 12px;
   color: #C9C9C9;
+  text-decoration: none;
+}
+
+.credits > a:hover {
+  text-decoration: underline;
 }
 
 table {
