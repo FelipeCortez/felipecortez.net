@@ -1,1 +1,1 @@
-scp -r output/* felipecortez.net:/srv/www/felipecortez/
+rsync -rvz html/* felipecortez.net:/srv/www/felipecortez/
