@@ -161,3 +161,17 @@ td {
 tr:nth-child(even) {
   background-color: #F9F9F9;
 }
+
+.webring {
+  width: 30px;
+  height: 30px;
+  filter: hue-rotate(90deg);
+}
+
+.webring-img {
+  width: 24px;
+  height: 25px;
+  mask: url('http://webring.xxiivv.com/icon.black.svg') no-repeat center;
+  mask-size: 24px;
+  background-color: var(--blu);
+}
