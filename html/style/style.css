@@ -6,7 +6,7 @@ body {
   background-color: #fefefe;
   margin: 0;
   padding: 35px 0;
-  font-family: 'Rubik', Helvetica, Arial, sans-serif;
+  font-family: 'aktiv-grotesk', Helvetica, Arial, sans-serif;
   font-size: 100%;
 }
 
@@ -35,12 +35,12 @@ code {
 
 h1 {
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 h2 {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .container {
@@ -64,7 +64,7 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-bottom: 30px;
+  margin-bottom: 16px;
 }
 
 li, li a, li span, h6 {
@@ -90,7 +90,6 @@ p > a {
 
 h6 {
   font-size: 13.2px;
-  margin-top: 20px;
 }
 
 .gray-bg {
@@ -101,7 +100,7 @@ h6 {
 }
 
 input[type='text'], textarea {
-  font-family: 'Rubik', Helvetica, Arial, sans-serif;
+  font-family: 'aktiv-grotesk', Helvetica, Arial, sans-serif;
   background-color: #FEFEFE;
   border: 1px solid #979797;
   border-radius: 2px;
