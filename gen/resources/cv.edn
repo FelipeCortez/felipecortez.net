@@ -1,0 +1,24 @@
+{
+ :name "Felipe Cortez de Sá"
+ :experience [{:where "Moip / Wirecard"
+               :what "Back-end"
+               :stack ["Java" "Spring"]
+               :period "2018-"}
+              {:where "INPE"
+               :what "Bolsista"
+               :stack ["C++" "Qt" "Arduino"]
+               :period "2017-2018"}
+              {:where "Instituto do Cérebro"
+               :what "Bolsista"
+               :stack ["Python" "Cython" "scipy" "numpy" "matplotlib"]
+               :period "2017-2018"}]
+ :technologies [{:title "Python"
+                 :proof ["https://github.com/FelipeCortez/bmarks"]}
+                {:title "C++"
+                 :proof ["https://github.com/FelipeCortez/bmarks"
+                         "https://github.com/FelipeCortez/grybo"]}
+                {:title "Clojure"
+                 :proof ["https://github.com/FelipeCortez/clojure"]}
+                {:title "Etc"
+                 :proof ["https://github.com/FelipeCortez/etc"]}]
+ }
