@@ -1,24 +1,47 @@
-{
- :name "Felipe Cortez de Sá"
+{:name "Felipe Cortez de Sá"
  :experience [{:where "Moip / Wirecard"
-               :what "Back-end"
                :stack ["Java" "Spring"]
-               :period "2018-"}
-              {:where "INPE"
-               :what "Bolsista"
+               :when  "2018-"
+               :what {:en "Works on the subscriptions product back-end API, adding features, fixing bugs and resolving customer incidents"
+                      :pt "Trabalha com o back-end do produto de assinaturas, implementando funcionalidades, corrigindo falhas e resolvendo incidentes de clientes integrados com a nossa API"}}
+
+              {:where {:en "National Institute for Space Research"
+                       :pt "Instituto Nacional de Pesquisas Espaciais"}
                :stack ["C++" "Qt" "Arduino"]
-               :period "2017-2018"}
-              {:where "Instituto do Cérebro"
-               :what "Bolsista"
-               :stack ["Python" "Cython" "scipy" "numpy" "matplotlib"]
-               :period "2017-2018"}]
+               :when  "2017-2018"
+               :what {:en "Converted a terminal-based satellite tracking program to a graphical user interface application, added new features, fixed bugs in Arduino code and wrote documentation"
+                      :pt "Adaptou um software de rastreio de satélites originalmente baseado em linha de comandos para um programa desktop, implementou interface gráfica, adicionou novos recursos, corrigiu bugs em Arduino e elaborou documentação"}}
+
+              {:where {:en "Brain Institute"
+                       :pt "Instituto do Cérebro"}
+               :stack ["Python" "Cython" "scipy"]
+               :when  "2014"
+               :what {:en "Implemented several time and frequency-based pitch tracking algorithms and a real-time demosaicing algorithm"
+                      :pt "Implementou diversos algoritmos para detecção de frequência fundamental baseados em domínios temporal e espectral e um algoritmo em tempo real de interpolação cromática"}}]
+
+ :education [{:uni {:en "Federal University of Rio Grande do Norte"
+                    :pt "Universidade Federal do Rio Grande do Norte"}
+              :what {:en "Bachelor of Computer Science"
+                     :pt "Bacharel em Ciência da Computação"}
+              :when "2012-2018"}
+
+             {:uni "The University of Birmingham"
+              :what {:en "Year abroad sponsored by the National Council for Scientific and Technological Development"
+                     :pt "Graduação sanduíche pelo programa Ciência sem Fronteiras"}
+              :when "2014-2015"}]
+
+ :projects [{:title "bmarks.net"
+             :what  {:en "A simple tag-based bookmark manager"
+                     :pt "Gerenciador de favoritos baseado em tags."}}]
+
  :technologies [{:title "Python"
-                 :proof ["https://github.com/FelipeCortez/bmarks"]}
-                {:title "C++"
                  :proof ["https://github.com/FelipeCortez/bmarks"
-                         "https://github.com/FelipeCortez/grybo"]}
+                         "https://github.com/FelipeCortez/advent-of-code"
+                         "https://github.com/FelipeCortez/nlp"]}
+                {:title "C++"
+                 :proof ["https://github.com/FelipeCortez/emmn"
+                         "https://github.com/FelipeCortez/grybo"
+                         "https://github.com/FelipeCortez/StocSynth"
+                         "https://github.com/FelipeCortez/fcbmidi"]}
                 {:title "Clojure"
-                 :proof ["https://github.com/FelipeCortez/clojure"]}
-                {:title "Etc"
-                 :proof ["https://github.com/FelipeCortez/etc"]}]
- }
+                 :proof ["https://github.com/FelipeCortez/advent-of-code"]}]}
