@@ -1,4 +1,7 @@
-{:name "Felipe Cortez de Sá"
+{:info {:name "Felipe Cortez de Sá"
+        :phone "+55 11 98910 0860"
+        :email "felipecortezfi@gmail.com"}
+
  :experience [{:where "Moip / Wirecard"
                :stack ["Java" "Spring"]
                :when  "2018-"
