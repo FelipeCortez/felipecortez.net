@@ -7,4 +7,6 @@
                  [ring "1.5.0"]
                  [compojure "1.5.1"]
                  [hiccup "1.0.5"]]
+  :plugins [[lein-ring "0.12.5"]]
+  :ring {:handler gen.core/handler}
   :repl-options {:init-ns gen.core})
