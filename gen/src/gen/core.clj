@@ -23,7 +23,8 @@
    [:meta {:name    "author"
            :content "Felipe Cortez"}]
    (include-css "https://use.typekit.net/ccn1qlb.css"
-                "/cv.css")))
+                "https://use.typekit.net/vcl8qud.css"
+                "cv.css")))
 
 (def ^:dynamic *language* :en)
 
@@ -48,49 +49,56 @@
 (def cv-info
   (let [info (:info cv)]
     [:section
-     [:h1 (:name     info)]
-     [:h2 (:phone    info)]
-     [:h2 (:email    info)]
-     [:h2 (:site     info)]
-     [:h2 (:location info)]]))
+     [:p.name (:name     info)]
+     [:p (:phone    info)]
+     [:p (:email    info)]
+     [:p (:site     info)]
+     [:p (:location info)]]))
 
 (def cv-experience
   (let [experiences (:experience cv)]
-    (map
-     (fn [experience]
-       [:div.experience
-        [:h2 (-> (:where experience) (tr *language*))]
-        [:h3 (:when experience)]
-        [:p.description (-> (:what  experience) (tr *language*))]])
-     experiences)))
+    [:section
+     [:h1 [:span (tr {:en "Experience" :pt "Experiência"} *language*)]]
+     (map
+      (fn [experience]
+        [:div
+         [:h2 (-> (:where experience) (tr *language*))]
+         [:h3 (:when experience)]
+         [:p.description (-> (:what  experience) (tr *language*))]])
+      experiences)]))
 
 (def cv-education
   (let [education (:education cv)]
-    (map
-     (fn [uni]
-       [:div.education
-        [:h2 (-> (:which uni) (tr *language*))]
-        [:h3 (:when uni)]
-        [:p.description (-> (:what  uni) (tr *language*))]])
-     education)))
+    [:section
+     [:h1 [:span (tr {:en "Education" :pt "Educação"} *language*)]]
+     (map
+      (fn [uni]
+        [:div.education
+         [:h2 (-> (:which uni) (tr *language*))]
+         [:h3 (:when uni)]
+         [:p.description (-> (:what  uni) (tr *language*))]])
+      education)]))
 
 (def cv-tools
   (let [tools (:technologies cv)]
-    (map
-     (fn [tool]
-       [:div.tool
-        [:h3 (:title tool)
-         (map-indexed (fn [idx itm]
-                        (vector :sup {:href itm} (str "[" (inc idx) "]")))
-                      (:proof tool))]
-        ])
-     tools)))
+    [:section
+     [:h1 [:span (tr {:en "Tools" :pt "Ferramentas"} *language*)]]
+     (map
+      (fn [tool]
+        [:div.tool
+         [:h3 (:title tool)
+          (map-indexed (fn [idx itm]
+                         (vector :sup {:href itm} (str "[" (inc idx) "]")))
+                       (:proof tool))]])
+      tools)]))
 
 (defroutes my-routes
-  (GET "/" req (document (list cv-info
-                               cv-experience
-                               cv-education
-                               cv-tools))))
+  (GET "/"
+       req
+       (document (list cv-info
+                       cv-experience
+                       cv-education
+                       cv-tools))))
 
 (def handler
   (-> (handler/site my-routes)
