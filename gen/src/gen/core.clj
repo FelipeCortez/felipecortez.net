@@ -7,8 +7,10 @@
             [clojure.edn :as edn]
             [clojure.java.io :as io]))
 
-(defn tr [sentence language]
-  (or (language sentence) sentence))
+(def ^:dynamic *language* :pt)
+
+(defn tr [sentence]
+  (or (*language* sentence) sentence))
 
 (defn body [content]
   [:body content])
@@ -24,9 +26,9 @@
            :content "Felipe Cortez"}]
    (include-css "https://use.typekit.net/ccn1qlb.css"
                 "https://use.typekit.net/vcl8qud.css"
-                "cv.css")))
-
-(def ^:dynamic *language* :en)
+                "reset.css"
+                "cv.css"
+                )))
 
 (defn analytics []
   [:script "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-49103022-1', 'auto');ga('send', 'pageview');"])
@@ -58,39 +60,41 @@
 (def cv-experience
   (let [experiences (:experience cv)]
     [:section
-     [:h1 [:span (tr {:en "Experience" :pt "Experiência"} *language*)]]
+     [:h1 [:span (tr {:en "Experience" :pt "Experiência"})]]
      (map
       (fn [experience]
         [:div
-         [:h2 (-> (:where experience) (tr *language*))]
-         [:h3 (:when experience)]
-         [:p.description (-> (:what  experience) (tr *language*))]])
+         [:h2 (-> (:where experience) (tr))]
+         ;; [:h3 (:when experience)]
+         [:p.description (-> (:what  experience) (tr))]])
       experiences)]))
 
 (def cv-education
   (let [education (:education cv)]
     [:section
-     [:h1 [:span (tr {:en "Education" :pt "Educação"} *language*)]]
+     [:h1 [:span (tr {:en "Education" :pt "Educação"})]]
      (map
       (fn [uni]
         [:div.education
-         [:h2 (-> (:which uni) (tr *language*))]
-         [:h3 (:when uni)]
-         [:p.description (-> (:what  uni) (tr *language*))]])
+         [:h2 (-> (:which uni) (tr))]
+         ;; [:h3 (:when uni)]
+         [:p.description (-> (:what  uni) (tr))]])
       education)]))
+
+(defn format-proofs [proofs]
+  (map-indexed (fn [idx itm] [:sup [:a {:href itm} (str "[" (inc idx) "]")]])
+               proofs))
+
+(defn format-tools [tools]
+  (->> tools
+       (map #(vector :div.tool [:h3 (tr (:title %))
+                                (-> (:proof %) format-proofs)]))))
 
 (def cv-tools
   (let [tools (:technologies cv)]
     [:section
-     [:h1 [:span (tr {:en "Tools" :pt "Ferramentas"} *language*)]]
-     (map
-      (fn [tool]
-        [:div.tool
-         [:h3 (:title tool)
-          (map-indexed (fn [idx itm]
-                         (vector :sup {:href itm} (str "[" (inc idx) "]")))
-                       (:proof tool))]])
-      tools)]))
+     [:h1 [:span (tr {:en "Tools" :pt "Ferramentas"})]]
+     [:div.tools (format-tools tools)]]))
 
 (defroutes my-routes
   (GET "/"

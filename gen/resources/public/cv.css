@@ -1,24 +1,42 @@
 @page {
-  margin: 1cm;
+  margin: 1.5cm;
+}
+
+@media screen {
+  body {
+    width: 800px;
+    margin: 35px;
+  }
 }
 
 .name {
   font-size: 24px;
+  color: rgba(50, 50, 50, 1);
 }
 
 body {
   font-family: ff-real-headline-pro-2, sans-serif;
+  background-color: white;
+}
+
+.tools {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
 }
 
 section h1 {
   width: 100%;
   border-bottom: 2px solid gray;
   line-height: 0;
+  margin: 12px 0 12px 0;
 }
 
 section h1 span {
+  position: relative;
+  top: 2px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   margin-left: 30px;
   background-color: white;
   text-transform: uppercase;
@@ -26,6 +44,7 @@ section h1 span {
 }
 
 section h2 {
+  font-size: 20px;
   font-weight: 300;
 }
 
@@ -35,7 +54,8 @@ section h3 {
 }
 
 p {
-  font-size: 16px;
+  font-size: 14px;
+  font-family: ff-real-headline-pro-2, sans-serif;
   font-weight: 300;
   color: rgba(80, 80, 80, 1);
   margin: 0;
