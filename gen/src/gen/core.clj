@@ -5,7 +5,7 @@
             [ring.middleware.resource :refer [wrap-resource]]))
 
 (defroutes my-routes
-  (GET "/" req cv-page))
+  (GET "/" req (cv-page)))
 
 (def handler
   (-> (handler/site my-routes)
