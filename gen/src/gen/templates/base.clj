@@ -14,6 +14,7 @@
    (include-css "https://use.typekit.net/ccn1qlb.css"
                 "https://use.typekit.net/vcl8qud.css"
                 "reset.css"
+                "base.css"
                 "cv.css")))
 
 (defn analytics []
