@@ -42,6 +42,7 @@
 body {
   font-family: ff-real-headline-pro-2, sans-serif;
   background-color: white;
+  padding: 0;
 }
 
 .section-container {
