@@ -8,8 +8,8 @@
  :experience [{:where "Nubank"
                :stack ["Clojure"]
                :when  {:en "2019–present" :pt "2019-atual"}
-               :what {:en "Maintains internal tools at Latin America's largest fintech."
-                      :pt "Trabalha na manutenção de ferramentas internas na maior fintech da América Latina."}}
+               :what {:en "Maintains internal tools."
+                      :pt "Trabalha na manutenção de ferramentas internas."}}
 
               {:where {:en "Moip / Wirecard Brazil"
                        :pt "Moip / Wirecard Brasil"}
