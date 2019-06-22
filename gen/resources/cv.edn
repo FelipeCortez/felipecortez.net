@@ -1,16 +1,22 @@
 {:info {:name     "Felipe Cortez de Sá"
-        :outline  "Software developer with experience in web and desktop applications and an interest in computers, music, design and all of its intersections."
+        :outline  "Software developer with experience in web and desktop applications and an interest in computers, music, design and their intersections."
         :phone    "+55 11 98910 0860"
-        :email    "felipecortezfi@gmail.com"
+        :email    "contact@felipecortez.net"
         :site     "felipecortez.net · github.com/felipecortez"
         :location "São Paulo, SP"}
 
- :experience [{:where {:en "Moip / Wirecard Brazil"
+ :experience [{:where "Nubank"
+               :stack ["Clojure"]
+               :when  {:en "2019–present" :pt "2019-atual"}
+               :what {:en "Maintains internal tools at Latin America's largest fintech."
+                      :pt "Trabalha na manutenção de ferramentas internas na maior fintech da América Latina."}}
+
+              {:where {:en "Moip / Wirecard Brazil"
                        :pt "Moip / Wirecard Brasil"}
                :stack ["Java" "Spring"]
-               :when  {:en "2018–present" :pt "2018–atual"}
-               :what {:en "Works on the subscriptions product back-end API, adding features, fixing bugs and resolving customer incidents."
-                      :pt "Trabalha com o back-end do produto de assinaturas, implementando funcionalidades, corrigindo falhas e resolvendo incidentes de clientes integrados com a nossa API."}}
+               :when  "2018–2019"
+               :what {:en "Worked on the subscriptions product back-end API, adding features, fixing bugs and resolving customer incidents."
+                      :pt "Trabalhou com o back-end do produto de assinaturas, implementando funcionalidades, corrigindo falhas e resolvendo incidentes de clientes integrados com a API."}}
 
               {:where {:en "INPE - National Institute for Space Research"
                        :pt "INPE - Instituto Nacional de Pesquisas Espaciais"}
