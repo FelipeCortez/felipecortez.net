@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 
   const page = await browser.newPage();
 
-  await page.goto('http://127.0.0.1:3000/', {waitUntil: 'load'});
+  await page.goto('http://127.0.0.1:3000/cv', {waitUntil: 'load'});
   await page.pdf({path: 'build/cv.pdf', format: 'A4'});
 
   await browser.close();
