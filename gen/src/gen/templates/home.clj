@@ -21,4 +21,4 @@
      [:ul.front-links
       (map (fn [[title link]] [:li [:a {:href link} title]])
            (links))]
-     [:h6 "felipecortezfi@gmail.com"]]]))
+     [:h6 "contact@felipecortez.net"]]]))
