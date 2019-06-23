@@ -7,11 +7,13 @@
   [["cv" "/cv"]
    ["projects" "/projects"]
    ["github" "https://github.com/FelipeCortez"]
+  [["cv"         "/cv"]
+   ["projects"   "/projects"]
+   ["github"     "https://github.com/FelipeCortez"]
    ["soundcloud" "https://soundcloud.com/FelipeCortez"]
-   ["last.fm" "https://last.fm/user/FelipeSah"]
+   ["last.fm"    "https://last.fm/user/FelipeSah"]
    ["letterboxd" "https://letterboxd.com/FelipeCortez"]
-   ["facebook" "https://facebook.com/FelipeSah"]
-   ["bookmarks" "https://bmarks.net/felipecortez"]])
+   ["bookmarks"  "https://bmarks.net/felipecortez"]])
 
 (defn home-page []
   (document
