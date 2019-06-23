@@ -60,4 +60,5 @@
                     (format-section {:en "Experience" :pt "Experiência"} (:experience cv) :when :where :stack :what)
                     (format-section {:en "Education"  :pt "Educação"}    (:education cv)  :when :where :_     :what)
                     (format-section {:en "Projects"   :pt "Projetos"}    (:projects cv)   :when :title :stack :what)
-                    (format-tools cv)))))
+                    (format-tools cv))
+              ["cv.css"])))

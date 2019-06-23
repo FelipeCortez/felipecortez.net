@@ -4,9 +4,6 @@
             [gen.util :refer [tr]]))
 
 (defn links []
-  [["cv" "/cv"]
-   ["projects" "/projects"]
-   ["github" "https://github.com/FelipeCortez"]
   [["cv"         "/cv"]
    ["projects"   "/projects"]
    ["github"     "https://github.com/FelipeCortez"]
@@ -18,9 +15,10 @@
 (defn home-page []
   (document
    [:div
-    [:div.container
+    [:div.container.pad
      [:h1.title {:style "display: inline-block"} "Felipe Cortez"]
      [:ul.front-links
       (map (fn [[title link]] [:li [:a {:href link} title]])
            (links))]
-     [:h6 "contact@felipecortez.net"]]]))
+     [:h6 "contact@felipecortez.net"]]]
+   []))

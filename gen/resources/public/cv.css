@@ -128,3 +128,8 @@ sup {
 sup a {
   text-decoration: none;
 }
+
+.proof a {
+  color: var(--blu);
+  margin-left: 2px;
+}
