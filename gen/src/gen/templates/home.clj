@@ -14,11 +14,11 @@
 
 (defn home-page []
   (document
+   {:title "Felipe Cortez"}
    [:div
     [:div.container.pad
      [:h1.title {:style "display: inline-block"} "Felipe Cortez"]
      [:ul.front-links
       (map (fn [[title link]] [:li [:a {:href link} title]])
            (links))]
-     [:h6 "contact@felipecortez.net"]]]
-   []))
+     [:h6 "contact@felipecortez.net"]]]))

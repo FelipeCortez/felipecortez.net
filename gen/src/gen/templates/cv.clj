@@ -56,9 +56,11 @@
 
 (defn cv-page []
   (let [cv (read-cv "resources/cv.edn")]
-    (document (list (format-info cv)
+    (document {:title "Felipe Cortez · CV"
+               :description "Work experience, personal projects and tech I have worked with"
+               :css ["cv.css"]}
+              (list (format-info cv)
                     (format-section {:en "Experience" :pt "Experiência"} (:experience cv) :when :where :stack :what)
                     (format-section {:en "Education"  :pt "Educação"}    (:education cv)  :when :where :_     :what)
                     (format-section {:en "Projects"   :pt "Projetos"}    (:projects cv)   :when :title :stack :what)
-                    (format-tools cv))
-              ["cv.css"])))
+                    (format-tools cv)))))
