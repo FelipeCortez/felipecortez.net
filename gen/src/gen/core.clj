@@ -2,15 +2,13 @@
   (:require [gen.templates.cv :refer [cv-page]]
             [gen.templates.projects :refer [projects-page]]
             [gen.templates.home :refer [home-page]]
-            [compojure.core :refer :all]
-            [compojure.handler :as handler]
-            [ring.middleware.resource :refer [wrap-resource]]))
+            [clojure.java.io :as io]
+            [clojure.java.shell :as shell]))
 
-(defroutes my-routes
-  (GET "/"         req (home-page))
-  (GET "/cv"       req (cv-page))
-  (GET "/projects" req (projects-page)))
+(defn cp [from to] (shell/sh))
+(defn politely-spit [f contents] (io/make-parents f) (spit f contents))
 
-(def handler
-  (-> (handler/site my-routes)
-      (wrap-resource "public")))
+(politely-spit "../build/index.html" (home-page))
+(politely-spit "../build/cv.html" (cv-page))
+(politely-spit "../build/projects.html" (projects-page))
+(shell/sh "rsync" "-r" "resources/public" "../build")

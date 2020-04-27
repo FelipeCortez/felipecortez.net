@@ -1,5 +1,5 @@
 (ns gen.templates.cv
-  (:require [gen.templates.base :refer :all]
+  (:require [gen.templates.base :refer [document]]
             [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojure.string :as string]

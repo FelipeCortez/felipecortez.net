@@ -1,5 +1,5 @@
 (ns gen.templates.base
-  (:require [hiccup.core :refer :all]
+  (:require [hiccup.core :refer [html]]
             [hiccup.page :refer [html5 doctype include-css include-js]]))
 
 (defn metadata [page-description]
@@ -33,7 +33,6 @@
   [:body content])
 
 (defn document [{:keys [title css js description]} content]
-  (println title css js description)
   (str (:html5 doctype)
        (html [:html {:lang "en"}
               (head title description js css)

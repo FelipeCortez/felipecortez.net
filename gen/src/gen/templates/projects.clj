@@ -1,5 +1,5 @@
 (ns gen.templates.projects
-  (:require [gen.templates.base :refer :all]
+  (:require [gen.templates.base :refer [document]]
             [gen.util :refer [tr]]))
 
 (defn projects-page []

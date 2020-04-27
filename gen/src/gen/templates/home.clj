@@ -1,5 +1,5 @@
 (ns gen.templates.home
-  (:require [gen.templates.base :refer :all]
+  (:require [gen.templates.base :refer [document]]
             [clojure.string :as string]
             [gen.util :refer [tr]]))
 
