@@ -4,8 +4,8 @@
             [gen.util :refer [tr]]))
 
 (defn links []
-  [["cv"         "/cv"]
-   ["projects"   "/projects"]
+  [["cv"         "/cv/"]
+   ["projects"   "/projects/"]
    ["github"     "https://github.com/FelipeCortez"]
    ["soundcloud" "https://soundcloud.com/FelipeCortez"]
    ["last.fm"    "https://last.fm/user/FelipeSah"]

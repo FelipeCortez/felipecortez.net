@@ -58,7 +58,7 @@
   (let [cv (read-cv "resources/cv.edn")]
     (document {:title "Felipe Cortez · CV"
                :description "Work experience, personal projects and tech I have worked with"
-               :css ["cv.css"]}
+               :css ["/cv.css"]}
               (list (format-info cv)
                     (format-section {:en "Experience" :pt "Experiência"} (:experience cv) :when :where :stack :what)
                     (format-section {:en "Education"  :pt "Educação"}    (:education cv)  :when :where :_     :what)

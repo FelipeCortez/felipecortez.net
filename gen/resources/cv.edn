@@ -56,7 +56,12 @@
              :stack ["Python" "Django" "PostgreSQL" "JavaScript"]
              :when "2017–present"}]
 
- :technologies [{:title "Python"
+ :technologies [{:title "Clojure"
+                 :topics ["re-frame"]
+                 :proof ["https://github.com/FelipeCortez/advent-of-code"
+                         "https://github.com/FelipeCortez/fse"]}
+
+                {:title "Python"
                  :topics ["Django" "Flask" "SciPy" "PyQt"]
                  :proof ["https://github.com/FelipeCortez/bmarks"
                          "https://github.com/FelipeCortez/advent-of-code"
@@ -69,11 +74,6 @@
                          "https://github.com/FelipeCortez/grybo"
                          "https://github.com/FelipeCortez/StocSynth"
                          "https://github.com/FelipeCortez/fcbmidi"]}
-
-                {:title "Clojure"
-                 :topics ["Ring"]
-                 :proof ["https://github.com/FelipeCortez/advent-of-code"
-                         "https://github.com/FelipeCortez/fse"]}
 
                 {:title "Java"
                  :proof ["https://github.com/FelipeCortez/Calendala"

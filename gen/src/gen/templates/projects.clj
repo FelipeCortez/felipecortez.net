@@ -4,7 +4,7 @@
 
 (defn projects-page []
   (document {:title "Felipe Cortez · Projects"
-             :css ["projects.css"]}
+             :css ["/projects.css"]}
             [:div
              [:div.container.pad
               {:style "max-width: 800px;"}
@@ -73,10 +73,10 @@
                [:div.image-container
                 [:div.image
                  [:a
-                  {:href "/nomes"}
+                  {:href "/nomes/"}
                   [:img {:src "/img/nomes.png", :alt "nomes"}]]]]
                [:div.info-container
-                [:a {:href "/nomes"}]
+                [:a {:href "/nomes/"}]
                 [:h2 "nomes"]
                 [:div.description
                  "An explorable list of most Brazilian names, including similar names found via "
@@ -105,10 +105,10 @@
                [:div.image-container
                 [:div.image
                  [:a
-                  {:href "/camilify"}
+                  {:href "/camilify/"}
                   [:img {:src "/img/camilify.png", :alt "camilify"}]]]]
                [:div.info-container
-                [:a {:href "/camilify"}]
+                [:a {:href "/camilify/"}]
                 [:h2 "camilify"]
                 [:div.description
                  "Simulates "
