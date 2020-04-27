@@ -47,8 +47,9 @@
                 [:ul.tech [:li "C++"] [:li "Qt"] [:li "Arduino"]]]]
               [:div.project
                [:div.image-container
-                [:a {:href "https://github.com/FelipeCortez/grybo"}]
-                [:div.image [:img {:src "/img/grybo.png", :alt "Grybo"}]]]
+                [:a
+                 {:href "https://github.com/FelipeCortez/grybo"}
+                 [:div.image [:img {:src "/img/grybo.png", :alt "Grybo"}]]]]
                [:div.info-container
                 [:a {:href "https://github.com/FelipeCortez/grybo"}]
                 [:h2 "grybo"]
