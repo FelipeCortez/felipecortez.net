@@ -162,11 +162,6 @@
     <div class="grid">
     </div>
 
-    <div class="container">
-      <ul class="friends">
-      </ul>
-    </div>
-
     <script>
      const url = new URL(window.location);
      let user = url.searchParams.get('u');
@@ -187,14 +182,14 @@
 
      const grid = document.querySelector(".grid");
 
-     let httpRequest1 = new XMLHttpRequest();
-     httpRequest1.open("GET", albumsRequestURL);
-     httpRequest1.send();
+     let httpRequest = new XMLHttpRequest();
+     httpRequest.open("GET", albumsRequestURL);
+     httpRequest.send();
 
-     httpRequest1.onreadystatechange = function() {
-       if (httpRequest1.readyState === XMLHttpRequest.DONE) {
-         if (httpRequest1.status === 200) {
-           const results = JSON.parse(httpRequest1.responseText);
+     httpRequest.onreadystatechange = function() {
+       if (httpRequest.readyState === XMLHttpRequest.DONE) {
+         if (httpRequest.status === 200) {
+           const results = JSON.parse(httpRequest.responseText);
            const albums = results["topalbums"]["album"];
            const albumsWithArtwork = albums.filter(album => album["image"][3]["#text"] != "")
                                            .slice(0, 60); // lcm(3, 4, 5)
@@ -222,42 +217,6 @@
              albumElement.appendChild(albumBandElement);
              albumElement.appendChild(albumTitleElement);
              grid.appendChild(albumElement);
-           }
-         }
-       }
-     }
-
-     const requestURL = "//ws.audioscrobbler.com/2.0/" +
-                        "?api_key=107499f5aeb365dcac943a0cd2c0fdaf" +
-                        "&method=user.getfriends" +
-                        `&user=${user}` +
-                        "&limit=500" +
-                        "&format=json";
-
-     const friendsList = document.querySelector(".friends");
-
-     httpRequest = new XMLHttpRequest();
-     httpRequest.open("GET", requestURL);
-     httpRequest.send();
-
-     httpRequest.onreadystatechange = function() {
-       if (httpRequest.readyState === XMLHttpRequest.DONE) {
-         if (httpRequest.status === 200) {
-           const results = JSON.parse(httpRequest.responseText);
-           const friends = results["friends"]["user"];
-           console.log(friends);
-           const friendsWithPlays = friends.filter(friend => friend["playcount"] > 0)
-                                           .slice(0, 100);
-           console.log(friendsWithPlays);
-           for (let friend of friendsWithPlays) {
-             let friendElement = document.createElement("li");
-
-             let friendHref = document.createElement("a");
-             friendHref.href = `/albums?u=${friend["name"]}`;
-             friendHref.textContent = `${friend["name"]}`;
-
-             friendElement.appendChild(friendHref);
-             friendsList.appendChild(friendElement);
            }
          }
        }
