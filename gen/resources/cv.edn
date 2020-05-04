@@ -1,5 +1,5 @@
 {:info {:name     "Felipe Cortez de Sá"
-        :outline  "Software developer with experience in web and desktop applications and an interest in computers, music, design and their intersections."
+        :outline  "Software developer with experience in web and desktop applications and an interest in computers, music and design."
         :phone    "+55 11 98910 0860"
         :email    "contact@felipecortez.net"
         :site     "felipecortez.net · github.com/felipecortez"
@@ -81,7 +81,7 @@
                  :topics ["Spring" "Swing" "Processing"]}
 
                 {:title "Web"
-                 :topics ["JavaScript" "AWS" "nginx" "Apache" "Wordpress"]}
+                 :topics ["JavaScript" "AWS" "nginx" "Apache" "WordPress"]}
 
                 {:title {:en "Audio" :pt "Áudio"}
                  :topics ["Max/MSP" "Ableton Live" "Logic Pro"]}

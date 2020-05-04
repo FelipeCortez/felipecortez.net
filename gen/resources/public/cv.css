@@ -22,7 +22,7 @@
 }
 
 .name {
-  font-family: ff-real-headline-pro-2, sans-serif;
+  font-family: "Whitney SC A", "Whitney SC B", sans-serif;
   font-size: 24px;
   color: var(--black);
 }
@@ -40,7 +40,7 @@
 }
 
 body {
-  font-family: ff-real-headline-pro-2, sans-serif;
+  font-family: "Whitney A", "Whitney B", sans-serif;
   background-color: white;
   padding: 0;
 }
@@ -55,6 +55,7 @@ body {
   display: grid;
   grid-template-columns: 12% auto;
   grid-column-gap: 12px;
+  grid-row-gap: 4px;
 }
 
 .tools {
@@ -72,8 +73,7 @@ section h1 {
 }
 
 section h1 span {
-  position: relative;
-  top: 2px;
+  font-family: "Whitney SC A", "Whitney SC B", sans-serif;
   font-weight: 400;
   font-size: 14px;
   margin-left: calc(12% - 5px + 12px);
@@ -83,7 +83,7 @@ section h1 span {
 }
 
 section h2 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 300;
   align-self: baseline;
 }
@@ -97,6 +97,8 @@ section h2 {
 
 .stack {
   font-size: 10px;
+  margin-top: 2px;
+  font-family: "Chronicle SSm A", "Chronicle SSm B", serif;
   color: var(--gray);
   text-align: right;
 }
@@ -108,7 +110,7 @@ section h3 {
 
 p {
   font-size: 14px;
-  font-family: ff-real-text-pro-2, sans-serif;
+  font-family: "Chronicle SSm A", "Chronicle SSm B", serif;
   font-weight: 400;
   color: var(--gray);
   margin: 0;
@@ -117,6 +119,11 @@ p {
 
 p.description {
   text-align: justify;
+  margin-top: 2px;
+}
+
+.tool h2 {
+  margin-bottom: 4px;
 }
 
 sup {

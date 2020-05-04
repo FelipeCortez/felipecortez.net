@@ -5,7 +5,6 @@
             [clojure.java.io :as io]
             [clojure.java.shell :as shell]))
 
-(defn cp [from to] (shell/sh))
 (defn politely-spit [f contents] (io/make-parents f) (spit f contents))
 
 (shell/sh "rm" "-rf" "build")

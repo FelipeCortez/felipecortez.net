@@ -2,18 +2,25 @@
   position: relative;
   display: grid;
   border-bottom: 1px solid #D8D8D8;
-  grid-template-columns: 135px auto;
-  padding: 15px 0;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+}
+
+.projects {
+  display: grid;
 }
 
 .project h2 {
+  margin-top: 0;
   margin-bottom: 10px;
   font-weight: 400;
 }
 
 .project a {
   text-decoration: none;
-  color: var(--blu);
+  color: inherit;
 }
 
 .project a:hover {
@@ -21,14 +28,24 @@
 }
 
 .project .description {
+  font-family: "Chronicle SSm A", "Chronicle SSm B", serif;
   font-size: 14px;
+  font-weight: 300;
   margin-bottom: 10px;
-  color: #353535;
+  color: rgb(100, 100, 100);
 }
 
-.project .description a {
-  color: #3F91CC;
+.project .description a:after {
+    position: relative;
+    content: "°";
+    margin-left: 0.10em;
+    font-size: 90%;
+    top: -0.10em;
+    color: var(--blu);
+    font-feature-settings: "caps";
+    font-variant-numeric: normal;
 }
+
 
 ul.tech {
   padding: 0;
@@ -46,15 +63,13 @@ ul.tech {
 
 .project .image-container {
   height: 100%;
-  width: 105px;
 }
 
 .project .image {
   padding: 2px;
   border: 1px solid #7f7f76;
-  width: 106px;
-  height: 106px;
   transition: filter 200ms;
+  line-height: 0;
 }
 
 .project .image:hover {

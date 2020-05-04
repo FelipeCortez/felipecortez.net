@@ -1,27 +1,38 @@
 :root {
   --blu: rgb(63, 145, 204);
+  --green: #3cb568;
 }
 
 body {
   background-color: #fefefe;
   margin: 0;
-  padding: 35px 0;
-  font-family: ff-real-text-pro-2, sans-serif;
-  font-size: 100%;
+  padding: 24px 32px;
+  font-family: "Chronicle SSm A", "Chronicle SSm B", sans-serif;
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  font-family: "Whitney A", "Whitney B", sans-serif;
 }
 
 code {
-  margin-top: 15px;
-  margin-bottom: 15px;
   font-family: monospace;
-  font-size: 12px;
   display: block;
   background-color: #f0f0f0;
 }
 
 .title {
   display: block;
-  color: #3cb568;
+  color: var(--green);
   margin-top: 0;
   margin-bottom: 30px;
   padding-bottom: 5px;
@@ -34,27 +45,14 @@ code {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: ff-real-headline-pro-2, sans-serif;
-}
-
-h1 {
-  font-size: 24px;
-}
-
-h2 {
-  font-size: 20px;
+  font-family: "Whitney A", "Whitney B", sans-serif;
 }
 
 .container {
   position: relative;
 }
 
-.pad {
-  padding: 0 35px;
-}
-
 .container > p {
-  font-size: 16px;
   line-height: 24px;
   text-align: justify;
   text-justify: inter-word;
@@ -62,7 +60,7 @@ h2 {
 
 .divider {
   font-weight: 500;
-  color: #3cb568;
+  color: var(--green);
 }
 
 ul {
@@ -74,7 +72,6 @@ ul {
 
 li, li a, li span, h6 {
   color: var(--blu);
-  font-size: 20px;
   font-weight: 400;
   text-decoration: none;
 }
@@ -93,24 +90,18 @@ p > a {
   color: #3f91cc;
 }
 
-h6 {
-  font-size: 13.2px;
-}
-
 .gray-bg {
   border-radius: 2px;
   background-color: #f9f9f9;
   padding: 10px;
-  font-size: 16px;
 }
 
 input[type='text'], textarea {
-  font-family: 'aktiv-grotesk', Helvetica, Arial, sans-serif;
   background-color: #fefefe;
   border: 1px solid #979797;
   border-radius: 2px;
-  font-size: 18px;
   color: #838383;
+  font-family: "Chronicle SSm A", "Chronicle SSm B", sans-serif;
   width: 100%;
   padding: 10px;
   box-shadow: inset 2px 2px 0 rgba(0, 0, 0, .04), 2px 2px 0 rgba(0, 0, 0, .04);
@@ -125,25 +116,6 @@ input[type=range] {
   width: 100%;
 }
 
-.credits {
-  width: 100%;
-  padding-top: 4px;
-  margin-top: 20px;
-  border-top: 1px solid #e6e6e6;
-}
-
-.credits > a {
-  float: right;
-  font-weight: 500;
-  font-size: 12px;
-  color: #c9c9c9;
-  text-decoration: none;
-}
-
-.credits > a:hover {
-  text-decoration: underline;
-}
-
 table {
   border-collapse: collapse;
 }
@@ -153,7 +125,6 @@ thead > tr {
 }
 
 tr, th {
-  font-size: 14px;
   padding: 5px;
   text-align: left;
 }
@@ -164,14 +135,4 @@ td {
 
 tr:nth-child(even) {
   background-color: #f9f9f9;
-}
-
-.webring-img {
-  width: 24px;
-  height: 25px;
-  mask: url('/img/webring.black.svg') no-repeat center;
-  -webkit-mask: url('/img/webring.black.svg') no-repeat center;
-  mask-size: 24px;
-  -webkit-mask-size: 24px;
-  background-color: var(--blu);
 }
