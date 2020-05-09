@@ -319,8 +319,6 @@
                  }
                }
              }
-
-             history.replaceState({name: name}, null, "/nomes/" + name);
            } else {
              nameInput.style.borderColor = "#CC3F3F";
            }
@@ -339,7 +337,6 @@
        }
 
        showSimilarNamesTable(false);
-       history.replaceState({page: page}, null, "/nomes/" + page);
        window.scrollTo({left: 0, top: 0, behavior: 'smooth'});
 
        pageNumber.innerHTML = page;
