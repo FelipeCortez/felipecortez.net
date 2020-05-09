@@ -199,10 +199,6 @@
     <div class="container" style="width: 600px;">
       <h1 class="title">nomes</h1>
 
-      <form id="name-form">
-        <input id="name-input" type="text" name="name" placeholder="pesquisar">
-      </form>
-
       <div id="tables">
         <table id="names">
           <thead>
@@ -248,7 +244,6 @@
       const prevPage = document.getElementById("prev-page");
       const lastPage = document.getElementById("last-page");
       const nameForm = document.getElementById("name-form");
-      const nameInput = document.getElementById("name-input");
       const arrow = document.getElementById("arrow");
       const totalPages = 137
 
@@ -296,8 +291,6 @@
 
 		      showSimilarNamesTable(true);
 		  }
-              } else {
-		  nameInput.style.borderColor = "#CC3F3F";
               }
           }
       }
@@ -406,15 +399,6 @@
 	  pageInput.style.display = "none";
 	  pageNumber.style.display = "inline";
       }
-
-      nameForm.onsubmit = function(e) {
-	  e.preventDefault();
-	  requestName(nameInput.value);
-      }
-
-      nameInput.onkeydown = function() {
-       nameInput.style.borderColor = "#979797";
-     }
 
      // on load
      var url = window.location.pathname;
