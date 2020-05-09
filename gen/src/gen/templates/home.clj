@@ -21,4 +21,4 @@
      [:ul.front-links
       (map (fn [[title link]] [:li [:a {:href link} title]])
            (links))]
-     [:h6 "contact@felipecortez.net"]]]))
+     [:h6 {:style "font-size: 1.05rem"} "hi@felipecortez.net"]]]))
