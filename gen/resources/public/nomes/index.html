@@ -272,56 +272,33 @@
 
        httpRequest.open('GET', "https://api.felipecortez.net/nomes/api/name/" + name);
        httpRequest.send();
-       httpRequest.onreadystatechange = function() {
-         if (httpRequest.readyState === XMLHttpRequest.DONE) {
-           if (httpRequest.status === 200) {
-             var results = JSON.parse(httpRequest.responseText);
-             name = `${results["name"]}-${results["sex"]}`;
+	 httpRequest.onreadystatechange = function() {
+             if (httpRequest.readyState === XMLHttpRequest.DONE) {
+		 if (httpRequest.status === 200) {
+		     var results = JSON.parse(httpRequest.responseText);
+		     name = `${results["name"]}-${results["sex"]}`;
 
-             while (similarNamesBody.firstChild) {
-               similarNamesBody.removeChild(similarNamesBody.firstChild);
+		     while (similarNamesBody.firstChild) {
+			 similarNamesBody.removeChild(similarNamesBody.firstChild);
+		     }
+
+		     var position = document.getElementById(`n-${name}`).getBoundingClientRect().top + window.scrollY;
+		     similarNamesTable.style.marginTop = position + "px";
+		     window.scrollTo({left: 0, top: position - 50, behavior: 'smooth'});
+		     arrow.style.top = (position) + "px";
+
+		     var similarNames = results["similar_names"];
+
+		     for (var i = 0; i < similarNames.length; ++i) {
+			 result = similarNames[i];
+			 addRow(similarNamesBody, result["name"], result["sex"], result["qty"]);
+		     }
+
+		     showSimilarNamesTable(true);
+		 }
+             } else {
+		 nameInput.style.borderColor = "#CC3F3F";
              }
-
-             page = results["page"];
-             pageNumber.innerHTML = page;
-
-             httpRequest2 = new XMLHttpRequest();
-             httpRequest2.open('GET', "https://api.felipecortez.net/nomes/api/names/" + page.toString());
-             httpRequest2.send();
-             httpRequest2.onreadystatechange = function() {
-               if (httpRequest2.readyState === XMLHttpRequest.DONE) {
-                 if (httpRequest2.status === 200) {
-                   var results2 = JSON.parse(httpRequest2.responseText);
-                   while (namesTableBody.firstChild) {
-                     namesTableBody.removeChild(namesTableBody.firstChild);
-                   }
-
-                   for (var i = 0; i < results2.length; ++i) {
-                     result = results2[i];
-                     addRow(namesTableBody, result["name"], result["sex"], result["qty"]);
-                   }
-
-                   var position = document.getElementById(`n-${name}`).getBoundingClientRect().top + window.scrollY;
-                   similarNamesTable.style.marginTop = position + "px";
-                   window.scrollTo({left: 0, top: position - 50, behavior: 'smooth'});
-                   arrow.style.top = (position) + "px";
-
-                   var similarNames = results["similar_names"];
-
-                   for (var i = 0; i < similarNames.length; ++i) {
-                     result = similarNames[i];
-                     addRow(similarNamesBody, result["name"], result["sex"], result["qty"]);
-                   }
-
-                   showSimilarNamesTable(true);
-                 } else {
-                   console.log("error on fetch");
-                 }
-               }
-             }
-           } else {
-             nameInput.style.borderColor = "#CC3F3F";
-           }
          }
        }
 
