@@ -235,186 +235,184 @@
 
 
     <script>
-     const namesTable = document.getElementById("names");
-     const namesTableBody = document.getElementById("names-tbody");
-     const similarNamesTable = document.getElementById("similar-names");
-     const similarNamesBody = document.getElementById("similar-names-tbody");
-     const pages = document.getElementById("pages");
-     const firstPage = document.getElementById("first-page");
-     const nextPage = document.getElementById("next-page");
-     const pageForm = document.getElementById("page-form");
-     const pageInput = document.getElementById("page-input");
-     const pageNumber = document.getElementById("page-number");
-     const prevPage = document.getElementById("prev-page");
-     const lastPage = document.getElementById("last-page");
-     const nameForm = document.getElementById("name-form");
-     const nameInput = document.getElementById("name-input");
-     const arrow = document.getElementById("arrow");
-     const totalPages = 137
+      const namesTable = document.getElementById("names");
+      const namesTableBody = document.getElementById("names-tbody");
+      const similarNamesTable = document.getElementById("similar-names");
+      const similarNamesBody = document.getElementById("similar-names-tbody");
+      const pages = document.getElementById("pages");
+      const firstPage = document.getElementById("first-page");
+      const nextPage = document.getElementById("next-page");
+      const pageForm = document.getElementById("page-form");
+      const pageInput = document.getElementById("page-input");
+      const pageNumber = document.getElementById("page-number");
+      const prevPage = document.getElementById("prev-page");
+      const lastPage = document.getElementById("last-page");
+      const nameForm = document.getElementById("name-form");
+      const nameInput = document.getElementById("name-input");
+      const arrow = document.getElementById("arrow");
+      const totalPages = 137
 
-     var page = 1;
-     var httpRequest;
+      var page = 1;
+      var httpRequest;
 
-     function showSimilarNamesTable(show) {
-       const val = show ? "block" : "none";
-       similarNamesTable.style.display = val;
-       arrow.style.display = val;
-     }
+      function showSimilarNamesTable(show) {
+	  const val = show ? "block" : "none";
+	  similarNamesTable.style.display = val;
+	  arrow.style.display = val;
+      }
 
-     function requestName(name) {
-       showSimilarNamesTable(false);
+      function requestName(name) {
+	  showSimilarNamesTable(false);
 
-       httpRequest = new XMLHttpRequest();
+	  httpRequest = new XMLHttpRequest();
 
-       if (!httpRequest) {
-         return false;
-       }
+	  if (!httpRequest) {
+              return false;
+	  }
 
-       httpRequest.open('GET', "https://api.felipecortez.net/nomes/api/name/" + name);
-       httpRequest.send();
-	 httpRequest.onreadystatechange = function() {
-             if (httpRequest.readyState === XMLHttpRequest.DONE) {
-		 if (httpRequest.status === 200) {
-		     var results = JSON.parse(httpRequest.responseText);
-		     name = `${results["name"]}-${results["sex"]}`;
+	  httpRequest.open('GET', "https://api.felipecortez.net/nomes/api/name/" + name);
+	  httpRequest.send();
+	  httpRequest.onreadystatechange = function() {
+              if (httpRequest.readyState === XMLHttpRequest.DONE) {
+		  if (httpRequest.status === 200) {
+		      var results = JSON.parse(httpRequest.responseText);
+		      name = `${results["name"]}-${results["sex"]}`;
 
-		     while (similarNamesBody.firstChild) {
-			 similarNamesBody.removeChild(similarNamesBody.firstChild);
-		     }
+		      while (similarNamesBody.firstChild) {
+			  similarNamesBody.removeChild(similarNamesBody.firstChild);
+		      }
 
-		     var position = document.getElementById(`n-${name}`).getBoundingClientRect().top + window.scrollY;
-		     similarNamesTable.style.marginTop = position + "px";
-		     window.scrollTo({left: 0, top: position - 50, behavior: 'smooth'});
-		     arrow.style.top = (position) + "px";
+		      var position = document.getElementById(`n-${name}`).getBoundingClientRect().top + window.scrollY;
+		      similarNamesTable.style.marginTop = position + "px";
+		      window.scrollTo({left: 0, top: position - 50, behavior: 'smooth'});
+		      arrow.style.top = (position) + "px";
 
-		     var similarNames = results["similar_names"];
+		      var similarNames = results["similar_names"];
 
-		     for (var i = 0; i < similarNames.length; ++i) {
-			 result = similarNames[i];
-			 addRow(similarNamesBody, result["name"], result["sex"], result["qty"]);
-		     }
+		      for (var i = 0; i < similarNames.length; ++i) {
+			  result = similarNames[i];
+			  addRow(similarNamesBody, result["name"], result["sex"], result["qty"]);
+		      }
 
-		     showSimilarNamesTable(true);
-		 }
-             } else {
-		 nameInput.style.borderColor = "#CC3F3F";
-             }
-         }
-       }
+		      showSimilarNamesTable(true);
+		  }
+              } else {
+		  nameInput.style.borderColor = "#CC3F3F";
+              }
+          }
+      }
 
-     }
+      //-----------------------
 
-     //-----------------------
+      function requestPage() {
+	  httpRequest = new XMLHttpRequest();
 
-     function requestPage() {
-       httpRequest = new XMLHttpRequest();
+	  if (!httpRequest) {
+              return false;
+	  }
 
-       if (!httpRequest) {
-         return false;
-       }
+	  showSimilarNamesTable(false);
+	  window.scrollTo({left: 0, top: 0, behavior: 'smooth'});
 
-       showSimilarNamesTable(false);
-       window.scrollTo({left: 0, top: 0, behavior: 'smooth'});
+	  pageNumber.innerHTML = page;
 
-       pageNumber.innerHTML = page;
+	  httpRequest.open('GET', "https://api.felipecortez.net/nomes/api/names/" + page.toString());
+	  httpRequest.send();
+	  httpRequest.onreadystatechange = function() {
+              if (httpRequest.readyState === XMLHttpRequest.DONE) {
+		  if (httpRequest.status === 200) {
+		      var results = JSON.parse(httpRequest.responseText);
+		      while (namesTableBody.firstChild) {
+			  namesTableBody.removeChild(namesTableBody.firstChild);
+		      }
 
-       httpRequest.open('GET', "https://api.felipecortez.net/nomes/api/names/" + page.toString());
-       httpRequest.send();
-       httpRequest.onreadystatechange = function() {
-         if (httpRequest.readyState === XMLHttpRequest.DONE) {
-           if (httpRequest.status === 200) {
-             var results = JSON.parse(httpRequest.responseText);
-             while (namesTableBody.firstChild) {
-               namesTableBody.removeChild(namesTableBody.firstChild);
-             }
+		      for (var i = 0; i < results.length; ++i) {
+			  result = results[i];
+			  addRow(namesTableBody, result["name"], result["sex"], result["qty"]);
+		      }
+		  } else {
+		      console.log("error on fetch");
+		  }
+              }
+	  }
+      }
 
-             for (var i = 0; i < results.length; ++i) {
-               result = results[i];
-               addRow(namesTableBody, result["name"], result["sex"], result["qty"]);
-             }
-           } else {
-             console.log("error on fetch");
-           }
-         }
-       }
-     }
+      function validatePage(page) {
+	  return (page >= 1 && page <= 137);
+      }
 
-     function validatePage(page) {
-       return (page >= 1 && page <= 137);
-     }
+      function addRow(table, name, sex, qty) {
+	  var sexClass = (sex == "M" ? "blu" : "red");
+	  var sexSpan = "<span class='cdot " + sexClass + "'>·</span>";
+	  var row = table.insertRow();
 
-     function addRow(table, name, sex, qty) {
-       var sexClass = (sex == "M" ? "blu" : "red");
-       var sexSpan = "<span class='cdot " + sexClass + "'>·</span>";
-       var row = table.insertRow();
+	  var nameTd = row.insertCell();
+	  nameTd.className = "name";
+	  if (table.id == "names-tbody") {
+              nameTd.id = `n-${name}-${sex}`;
+	  }
+	  nameTd.insertAdjacentHTML("beforeend", `${sexSpan} ${name}`);
+	  nameTd.onclick = function() {
+              requestName(`${name}-${sex}`);
+	  }
 
-       var nameTd = row.insertCell();
-       nameTd.className = "name";
-       if (table.id == "names-tbody") {
-         nameTd.id = `n-${name}-${sex}`;
-       }
-       nameTd.insertAdjacentHTML("beforeend", `${sexSpan} ${name}`);
-       nameTd.onclick = function() {
-         requestName(`${name}-${sex}`);
-       }
+	  var qtyFmt = qty.toLocaleString('pt-BR')
+	  var qtyTd = row.insertCell();
+	  var qtyNode = document.createTextNode(qtyFmt);
+	  qtyTd.appendChild(qtyNode);
+      }
 
-       var qtyFmt = qty.toLocaleString('pt-BR')
-       var qtyTd = row.insertCell();
-       var qtyNode = document.createTextNode(qtyFmt);
-       qtyTd.appendChild(qtyNode);
-     }
+      window.onpopstate = function(event) {
+	  page = event.state.page;
+	  requestPage();
+      };
 
-     window.onpopstate = function(event) {
-       page = event.state.page;
-       requestPage();
-     };
+      firstPage.onclick = function() {
+	  page = 1;
+	  requestPage();
+      }
 
-     firstPage.onclick = function() {
-       page = 1;
-       requestPage();
-     }
+      prevPage.onclick = function() {
+	  if (validatePage(page - 1)) { --page; }
+	  requestPage();
+      }
 
-     prevPage.onclick = function() {
-       if (validatePage(page - 1)) { --page; }
-       requestPage();
-     }
+      nextPage.onclick = function() {
+	  if (validatePage(page + 1)) { ++page; }
+	  requestPage();
+      }
 
-     nextPage.onclick = function() {
-       if (validatePage(page + 1)) { ++page; }
-       requestPage();
-     }
+      lastPage.onclick = function() {
+	  page = 137;
+	  requestPage();
+      }
 
-     lastPage.onclick = function() {
-       page = 137;
-       requestPage();
-     }
+      pageForm.onsubmit = function(event) {
+	  event.preventDefault();
+	  page = validatePage(pageInput.value) ? pageInput.value : page;
+	  requestPage();
+	  pageInput.style.display = "none";
+	  pageNumber.style.display = "inline";
+      }
 
-     pageForm.onsubmit = function(event) {
-       event.preventDefault();
-       page = validatePage(pageInput.value) ? pageInput.value : page;
-       requestPage();
-       pageInput.style.display = "none";
-       pageNumber.style.display = "inline";
-     }
+      pageNumber.onclick = function() {
+	  pageInput.style.display = "block";
+	  pageNumber.style.display = "none";
+	  pageInput.focus();
+	  pageInput.value = page;
+      }
 
-     pageNumber.onclick = function() {
-       pageInput.style.display = "block";
-       pageNumber.style.display = "none";
-       pageInput.focus();
-       pageInput.value = page;
-     }
+      pageInput.onblur = function() {
+	  pageInput.style.display = "none";
+	  pageNumber.style.display = "inline";
+      }
 
-     pageInput.onblur = function() {
-       pageInput.style.display = "none";
-       pageNumber.style.display = "inline";
-     }
+      nameForm.onsubmit = function(e) {
+	  e.preventDefault();
+	  requestName(nameInput.value);
+      }
 
-     nameForm.onsubmit = function(e) {
-       e.preventDefault();
-       requestName(nameInput.value);
-     }
-
-     nameInput.onkeydown = function() {
+      nameInput.onkeydown = function() {
        nameInput.style.borderColor = "#979797";
      }
 
