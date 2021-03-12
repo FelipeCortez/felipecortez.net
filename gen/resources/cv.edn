@@ -7,9 +7,9 @@
 
  :experience [{:where "Nubank"
                :stack ["Clojure"]
-               :when  {:en "2019–present" :pt "2019-atual"}
-               :what {:en "Maintains internal tools."
-                      :pt "Trabalha na manutenção de ferramentas internas."}}
+               :when  {:en "2019–2020" :pt "2019-2020"}
+               :what {:en "Maintained internal tools."
+                      :pt "Trabalhou na manutenção de ferramentas internas."}}
 
               {:where {:en "Moip / Wirecard Brazil"
                        :pt "Moip / Wirecard Brasil"}
